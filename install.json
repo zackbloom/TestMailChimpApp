@@ -1,0 +1,26 @@
+{
+  "resources": {},
+  "options": {
+    "properties": {
+      "account": {
+        "title": "MailChimp Account",
+        "type": "object",
+        "format": "account",
+        "services": ["mailchimp"],
+        "order": 0
+      },
+    },
+  },
+  "hooks": [
+    {
+      "endpoint": "http://provisioner.eager.io/mailchimp/hook",
+      "events": ["preview", "new-install"],
+      "block": true,
+      "authenticate": ["account"],
+      "failure": {
+        "action": "notify",
+        "message": "There was an error communicating with MailChimp."
+      }
+    }
+  ]
+}
