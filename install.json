@@ -8,8 +8,8 @@
         "format": "account",
         "services": ["mailchimp"],
         "order": 0
-      },
-    },
+      }
+    }
   },
   "hooks": [
     {
