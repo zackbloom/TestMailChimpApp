@@ -3,7 +3,7 @@
   "options": {
     "properties": {
       "account": {
-        "title": "MailChimp Account",
+        "title": "Account",
         "type": "object",
         "format": "account",
         "services": ["mailchimp"],
@@ -14,7 +14,7 @@
   "hooks": [
     {
       "endpoint": "http://provisioner.eager.io/mailchimp/hook",
-      "events": ["preview", "new-install"],
+      "events": ["oauth-login", "option-change"],
       "block": true,
       "authenticate": ["account"],
       "failure": {
