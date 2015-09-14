@@ -1,5 +1,12 @@
 {
-  "resources": {},
+  "resources": {
+    "body": [
+      {
+        "type": "script",
+        "src": "./helper.js"
+      }
+    ]
+  },
   "options": {
     "properties": {
       "account": {
@@ -8,13 +15,27 @@
         "format": "account",
         "services": ["mailchimp"],
         "order": 0
+      },
+      "list": {
+        "title": "List",
+        "description": "Select the list in your account which email submissions should be added to",
+        "type": "string",
+        "showIf": "account.username",
+        "order": 1
+      },
+      "location": {
+        "title": "Location",
+        "description": "Where should the form be placed?",
+        "type": "object",
+        "format": "element",
+        "order": 2
       }
     }
   },
   "hooks": [
     {
       "endpoint": "http://provisioner.eager.io/mailchimp/hook",
-      "events": ["oauth-login", "option-change"],
+      "events": ["oauth-login", "account-logout", "preview", "client:submit"],
       "block": true,
       "authenticate": ["account"],
       "failure": {
