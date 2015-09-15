@@ -1,10 +1,16 @@
 (function(){
 
+  if (!INSTALL_OPTIONS.list)
+    return;
+
   var el = Eager.createElement(INSTALL_OPTIONS.location);
 
   var form = document.createElement('form');
+  form.action = INSTALL_OPTIONS.list;
+  form.method = 'post';
 
   var input = document.createElement('input');
+  input.name = 'EMAIL';
   input.placeholder = 'Email Address';
   form.appendChild(input);
 
@@ -13,17 +19,5 @@
   form.appendChild(submit);
 
   el.appendChild(form);
-
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-
-    Eager.trigger('submit', {"email": input.value})
-      .then(function(){
-        el.innerHTML = 'Got it!';
-      }, function(e){
-        el.innerHTML = 'Oops!';
-        console.log(e);
-      });
-  });
 
 })()
