@@ -29,6 +29,7 @@
 
     var url = INSTALL_OPTIONS.list;
     url = url.replace('http', 'https');
+    url = url.replace(/list-manage[0-9]+\.com/, 'list-manage.com');
     url = url.replace('?', '/post-json?');
     url = url + "&EMAIL=" + encodeURIComponent(input.value);
     url = url + "&c=" + cb;
