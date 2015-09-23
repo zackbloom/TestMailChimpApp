@@ -13,7 +13,7 @@
         "title": "Account",
         "type": "object",
         "format": "account",
-        "services": ["mailchimp"],
+        "services": ["mailchimp", "campaign-monitor"],
         "order": 0
       },
       "list": {
@@ -34,13 +34,13 @@
   },
   "hooks": [
     {
-      "endpoint": "http://provisioner.eager.io/mailchimp/hook",
-      "events": ["oauth-login", "account-logout", "preview", "client:submit"],
+      "endpoint": "http://provisioner.eager.io/{{ install.options.account.service }}/hook",
+      "events": ["oauth-login", "account-logout", "preview"],
       "block": true,
       "authenticate": ["account"],
       "failure": {
         "action": "notify",
-        "message": "There was an error communicating with MailChimp."
+        "message": "There was an error communicating with the mail service."
       }
     }
   ]
