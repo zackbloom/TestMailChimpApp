@@ -28,7 +28,7 @@
   "hooks": [
     {
       "endpoint": "http://provisioner.eager.io/{{ install.options.account.service }}/hook",
-      "events": ["oauth-login", "preview"],
+      "events": ["option-change:account", "preview"],
       "block": true,
       "if": "install.options.account.service",
       "authenticate": ["account"],
