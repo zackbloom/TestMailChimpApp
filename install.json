@@ -30,7 +30,7 @@
       "endpoint": "http://provisioner.eager.io/{{ install.options.account.service }}/hook",
       "events": ["option-change:account", "preview"],
       "block": true,
-      "if": "install.options.account.service",
+      "if": "install.options.account && install.options.account.service",
       "authenticate": ["account"],
       "failure": {
         "action": "notify",
