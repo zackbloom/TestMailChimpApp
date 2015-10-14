@@ -13,7 +13,7 @@
         "title": "Account",
         "type": "object",
         "format": "account",
-        "services": ["mailchimp", "campaign-monitor"],
+        "services": ["mailchimp", "constant-contact"],
         "order": 0
       },
       "location": {
