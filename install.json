@@ -38,6 +38,17 @@
       }
     },
     {
+      "endpoint": "http://provisioner.eager.io/constant-contact/hook",
+      "events": ["option-change:list"],
+      "block": true,
+      "if": "install.options.account && install.options.account.service == 'constant-contact'",
+      "authenticate": ["account"],
+      "failure": {
+        "action": "notify",
+        "message": "There was an error communicating with Constant Contact."
+      }
+    },
+    {
       "events": ["account-logout"],
       "action": "reset-schema"
     }
